@@ -1,6 +1,6 @@
 Package: tidyweo2024spring
 Type: Package
-Title: An R Package for IMF - World Economic Outlook.
+Title: An R Package for IMF - World Economic Outlook
 Version: 0.1.0
 Authors@R: c(
     person("Teal", "Emery", , "ltemery@gmail.com", role = c("aut")),
@@ -12,6 +12,7 @@ Description: Provides structured, convenient access to the International Monetar
 License: CC0
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: xz
 URL: https://github.com/Teal-Insights/tidyweo2024spring
 BugReports: https://github.com/Teal-Insights/tidyweo2024spring/issues
 Depends: 

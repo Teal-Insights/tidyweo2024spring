@@ -19,5 +19,5 @@
 #'   \item{values}{Values corresponding to years.}
 #'
 #' }
-#' @source \href{https://www.imf.org/en/Publications/SPROLLS/world-economic-outlook-databases#sort=%40imfdate%20descending}
+#' @source "https://www.imf.org/en/Publications/SPROLLS/world-economic-outlook-databases#sort=%40imfdate%20descending"
 "IMFcountries"
