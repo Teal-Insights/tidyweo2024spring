@@ -20,5 +20,5 @@
 #'
 #' }
 #'
-#' @source \href{https://www.imf.org/en/Publications/SPROLLS/world-economic-outlook-databases#sort=%40imfdate%20descending}{IMFcountries}
+#' @source  Data derived from \url{https://www.example.com}
 "IMFcountries"
