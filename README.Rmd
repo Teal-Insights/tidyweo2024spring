@@ -28,8 +28,8 @@ You can install the development version of `tidyweo2024spring` from [GitHub](htt
 # install the `devtools` package if not yet installed
 # install.packages("devtools")
 
-# install gbtransparency from GitHub
-devtools::install_github("Teal-Insights/gbtransparency")
+# install tidyweo2024spring from GitHub
+devtools::install_github("Teal-Insights/tidyweo2024spring")
 ```
 
 ## Example
@@ -38,5 +38,33 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(tidyweo2024spring)
-## basic example code
+library(knitr)
+library(tidyverse)
+```
+
+```{r}
+
+```
+## Available datasets
+
+### IMF - World Economic Outlook by countries
+```{r}
+tidyweo2024spring::IMFcountries %>% 
+  head() %>% 
+  kable()
+```
+
+```{r}
+
+```
+
+### IMF - World Economic Outlook by country groups
+```{r}
+tidyweo2024spring::IMFgroups %>% 
+  head() %>% 
+  kable()
+```
+
+```{r}
+
 ```
