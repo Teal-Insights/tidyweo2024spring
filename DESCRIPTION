@@ -14,3 +14,6 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/Teal-Insights/tidyweo2024spring
 BugReports: https://github.com/Teal-Insights/tidyweo2024spring/issues
+Depends: 
+    R (>= 2.10)
+RoxygenNote: 7.3.1
