@@ -2,7 +2,7 @@
 % Please edit documentation in R/imf_countries.R
 \name{imf_countries}
 \alias{imf_countries}
-\title{Extracts a tible of IMF - World Economic Outlook by countries}
+\title{Extracts a tibble of IMF - World Economic Outlook by countries}
 \usage{
 imf_countries()
 }
@@ -10,5 +10,5 @@ imf_countries()
 Returns a tible
 }
 \description{
-Extracts a tible of IMF - World Economic Outlook by countries
+Extracts a tibble of IMF - World Economic Outlook by countries
 }
