@@ -1,5 +1,5 @@
 
-#' imf_countries
+#' Extracts a tible of IMF - World Economic Outlook by countries
 #'
 #' @return Returns a tible
 #' @export

@@ -1,5 +1,5 @@
 
-#' imf_country_groups
+#' Extracts a tible of IMF - World Economic Outlook by country groups
 #'
 #' @return Returns a tible
 #' @export
