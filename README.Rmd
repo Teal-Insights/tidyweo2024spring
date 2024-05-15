@@ -50,7 +50,7 @@ library(tidyverse)
 ### IMF - World Economic Outlook by countries
 ```{r}
 imf_countries() %>% 
-  select(-c(country_series_specific_notes)) %>% 
+  select(-c(country_series_specific_notes,subject_notes)) %>% 
   head() %>% 
   kable()
 ```
@@ -93,6 +93,7 @@ weo_country_group_code %>%
 ## Subject code
 ```{r}
 weo_subject_code %>% 
+  select(-c(subject_notes)) %>% 
   head() %>% 
   kable()
 ```
