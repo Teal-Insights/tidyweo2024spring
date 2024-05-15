@@ -3,6 +3,16 @@
 # loading necessary libraries
 library(magrittr)
 
+# -------------------------------------------------------------------------
+
+# Function to replace non-ASCII characters
+replace_non_ascii <- function(column) {
+  if (is.character(column)) {
+    return(stringi::stri_trans_general(column, "latin-ascii"))
+  } else {
+    return(column)
+  }
+}
 # loading data: -----------------------------------------------------------
 # countries: --------------------------------------------------------------
 # link
@@ -21,7 +31,8 @@ df_clean_countries <- df_raw_countries %>%
     outcome = as.numeric(gsub(x = outcome, pattern = ",", replacement = ""))
   ) %>%
   janitor::clean_names() %>%
-  dplyr::filter(weo_subject_code != "")
+  dplyr::filter(weo_subject_code != "") %>%
+  dplyr::mutate(dplyr::across(dplyr::where(is.character), replace_non_ascii))
 
 # main data
 IMFcountries <- df_clean_countries %>% tidyr::spread(key = year, value = outcome)

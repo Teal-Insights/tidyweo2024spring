@@ -2,3 +2,8 @@
 
 export(imf_countries)
 export(imf_country_groups)
+importFrom(dplyr,"%>%")
+importFrom(dplyr,select)
+importFrom(dplyr,where)
+importFrom(tidyr,all_of)
+importFrom(tidyr,pivot_longer)
