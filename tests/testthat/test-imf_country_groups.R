@@ -1,13 +1,13 @@
 
 # start of test: ----------------------------------------------------------
-# test 1: check if the data object is a tibble
-testthat::test_that(desc = "Data object is a tibble", code = {
-  testthat::expect_s3_class(object = IMFgroups, class = "tbl_df")
+# test 1: check if the data object is a data.frame
+testthat::test_that(desc = "Data object is a data.frame", code = {
+  testthat::expect_s3_class(object = IMFgroups, class = "data.frame")
 })
 
-# test 2: check if the number of rows is 83200
-testthat::test_that(desc = "Number of rows is 83200", code = {
-  testthat::expect_equal(object = nrow(IMFgroups), expected = 83200)
+# test 2: check if the number of rows is 84864
+testthat::test_that(desc = "Number of rows is 84864", code = {
+  testthat::expect_equal(object = nrow(IMFgroups), expected = 84864)
 })
 
 # test 3: check if the number of columns is 11
