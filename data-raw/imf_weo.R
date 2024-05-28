@@ -19,12 +19,11 @@ replace_non_ascii <- function(column) {
 countries = "https://www.imf.org/-/media/Files/Publications/WEO/WEO-Database/2024/April/WEOApr2024all.ashx"
 # raw data
 df_raw_countries <- read.delim(file = countries, skipNul = TRUE)
+base_columns <- c(names(df_raw_countries)[-tidyr::starts_with(match = "X", ignore.case = TRUE, vars = names(df_raw_countries))])
 
 # clean data
 df_clean_countries <- df_raw_countries %>%
-  tidyr::gather(key = year,
-                value = outcome,
-                -c(names(df_raw_countries)[-starts_with(match = "X", ignore.case = TRUE, vars = names(df_raw_countries))])) %>%
+  tidyr::pivot_longer(names_to = "year", values_to = "outcome", cols = -base_columns) %>%
   dplyr::mutate(
     year = as.integer(gsub(x = year, pattern = "X", replacement = "")),
     outcome = dplyr::case_when(outcome %in% c("n/a","--") ~ NA, .default = outcome),
