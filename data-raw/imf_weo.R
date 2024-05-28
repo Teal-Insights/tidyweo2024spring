@@ -41,7 +41,7 @@ df_clean_countries <- df_raw_countries %>%
 IMFcountries <- df_clean_countries %>% tidyr::spread(key = year, value = outcome)
 
 # metadata weo_country_code
-weo_country_code <- df_clean_countries %>% dplyr::select(weo_country_code, iso, country) %>% dplyr::distinct()
+weo_country_code <- df_clean_countries %>% dplyr::select(weo_country_code, iso3c, country) %>% dplyr::distinct()
 
 # metadata weo_subject_code
 weo_subject_code <- df_clean_countries %>% dplyr::select(weo_subject_code, subject_descriptor, subject_notes, units, scale) %>% dplyr::distinct()
@@ -53,12 +53,11 @@ weo_subject_code <- df_clean_countries %>% dplyr::select(weo_subject_code, subje
 groups = "https://www.imf.org/-/media/Files/Publications/WEO/WEO-Database/2024/April/WEOApr2024alla.ashx"
 # raw data
 df_raw_groups <- read.delim(file = groups, skipNul = TRUE)
+base_columns_groups <- c(names(df_raw_groups)[-starts_with(match = "X", ignore.case = TRUE, vars = names(df_raw_groups))])
 
 # clean data
 IMFgroups <- df_raw_groups %>%
-  tidyr::gather(key = year,
-                value = outcome,
-                -c(names(df_raw_groups)[-starts_with(match = "X", ignore.case = TRUE, vars = names(df_raw_groups))])) %>%
+  tidyr::pivot_longer(names_to = "year", values_to = "outcome", cols = -all_of(base_columns_groups)) %>%
   dplyr::mutate(
     year = as.integer(gsub(x = year, pattern = "X", replacement = "")),
     outcome = dplyr::case_when(outcome %in% c("n/a","--") ~ NA, .default = outcome),

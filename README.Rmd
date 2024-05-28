@@ -94,7 +94,7 @@ weo_country_group_code %>%
 ```{r}
 weo_subject_code %>% 
   select(-c(subject_notes)) %>% 
-  head() %>% 
+  head(n = 6) %>% 
   kable()
 ```
 
