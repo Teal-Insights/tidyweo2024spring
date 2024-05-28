@@ -1,7 +1,7 @@
 
 # starts: -----------------------------------------------------------------
 # loading necessary libraries
-library(magrittr)
+library(dplyr)
 
 # -------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ base_columns <- c(names(df_raw_countries)[-tidyr::starts_with(match = "X", ignor
 
 # clean data
 df_clean_countries <- df_raw_countries %>%
-  tidyr::pivot_longer(names_to = "year", values_to = "outcome", cols = -base_columns) %>%
+  tidyr::pivot_longer(names_to = "year", values_to = "outcome", cols = -all_of(base_columns)) %>%
   dplyr::mutate(
     year = as.integer(gsub(x = year, pattern = "X", replacement = "")),
     outcome = dplyr::case_when(outcome %in% c("n/a","--") ~ NA, .default = outcome),
@@ -31,7 +31,11 @@ df_clean_countries <- df_raw_countries %>%
   ) %>%
   janitor::clean_names() %>%
   dplyr::filter(weo_subject_code != "") %>%
-  dplyr::mutate(dplyr::across(dplyr::where(is.character), replace_non_ascii))
+  dplyr::mutate(dplyr::across(dplyr::where(is.character), replace_non_ascii)) %>%
+  dplyr::mutate(iso3c = countrycode::countrycode(country, "country.name", "iso3c"),
+                iso3c = case_when(is.na(iso3c) ~ iso, .default = iso3c)) %>%
+  dplyr::select(-iso) %>%
+  relocate(iso3c, .after = weo_country_code)
 
 # main data
 IMFcountries <- df_clean_countries %>% tidyr::spread(key = year, value = outcome)
