@@ -45,14 +45,14 @@ imf_countries() %>%
   kable()
 ```
 
-| weo_country_code | iso3c | weo_subject_code | country     | subject_descriptor                      | units             | scale    | estimates_start_after | year | outcome |
-|:-----------------|:------|:-----------------|:------------|:----------------------------------------|:------------------|:---------|----------------------:|:-----|--------:|
-| 512              | AFG   | NGDP_R           | Afghanistan | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1980 |      NA |
-| 512              | AFG   | NGDP_R           | Afghanistan | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1981 |      NA |
-| 512              | AFG   | NGDP_R           | Afghanistan | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1982 |      NA |
-| 512              | AFG   | NGDP_R           | Afghanistan | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1983 |      NA |
-| 512              | AFG   | NGDP_R           | Afghanistan | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1984 |      NA |
-| 512              | AFG   | NGDP_R           | Afghanistan | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1985 |      NA |
+| weo_country_code | iso3c | country_name | weo_subject_code | subject_descriptor                      | units             | scale    | estimates_start_after | year | outcome |
+|:-----------------|:------|:-------------|:-----------------|:----------------------------------------|:------------------|:---------|----------------------:|:-----|--------:|
+| 512              | AFG   | Afghanistan  | NGDP_R           | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1980 |      NA |
+| 512              | AFG   | Afghanistan  | NGDP_R           | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1981 |      NA |
+| 512              | AFG   | Afghanistan  | NGDP_R           | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1982 |      NA |
+| 512              | AFG   | Afghanistan  | NGDP_R           | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1983 |      NA |
+| 512              | AFG   | Afghanistan  | NGDP_R           | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1984 |      NA |
+| 512              | AFG   | Afghanistan  | NGDP_R           | Gross domestic product, constant prices | National currency | Billions |                  2023 | 1985 |      NA |
 
 ### IMF - World Economic Outlook by country groups
 
@@ -62,14 +62,14 @@ imf_country_groups() %>%
   kable()
 ```
 
-| weo_country_group_code | weo_subject_code | country_group_name | subject_descriptor                      | subject_notes | units          | scale | country_series_specific_notes | estimates_start_after | year | outcome |
-|:-----------------------|:-----------------|:-------------------|:----------------------------------------|:--------------|:---------------|:------|:------------------------------|:----------------------|-----:|--------:|
-| 001                    | NGDP_RPCH        | World              | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1980 |   2.216 |
-| 001                    | NGDP_RPCH        | World              | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1981 |   2.004 |
-| 001                    | NGDP_RPCH        | World              | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1982 |   0.724 |
-| 001                    | NGDP_RPCH        | World              | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1983 |   2.641 |
-| 001                    | NGDP_RPCH        | World              | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1984 |   4.581 |
-| 001                    | NGDP_RPCH        | World              | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1985 |   3.648 |
+| weo_country_group_code | country_group_name | weo_subject_code | subject_descriptor                      | subject_notes | units          | scale | country_series_specific_notes | estimates_start_after | year | outcome |
+|:-----------------------|:-------------------|:-----------------|:----------------------------------------|:--------------|:---------------|:------|:------------------------------|:----------------------|-----:|--------:|
+| 001                    | World              | NGDP_RPCH        | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1980 |   2.216 |
+| 001                    | World              | NGDP_RPCH        | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1981 |   2.004 |
+| 001                    | World              | NGDP_RPCH        | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1982 |   0.724 |
+| 001                    | World              | NGDP_RPCH        | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1983 |   2.641 |
+| 001                    | World              | NGDP_RPCH        | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1984 |   4.581 |
+| 001                    | World              | NGDP_RPCH        | Gross domestic product, constant prices |               | Percent change | Units | NA                            | NA                    | 1985 |   3.648 |
 
 ## Metadata
 
@@ -77,18 +77,18 @@ imf_country_groups() %>%
 
 ``` r
 weo_country_code %>% 
-  head() %>% 
+  head(n = 6) %>% 
   kable()
 ```
 
-| weo_country_code | iso3c | country             |
-|:-----------------|:------|:--------------------|
-| 512              | AFG   | Afghanistan         |
-| 914              | ALB   | Albania             |
-| 612              | DZA   | Algeria             |
-| 171              | AND   | Andorra             |
-| 614              | AGO   | Angola              |
-| 311              | ATG   | Antigua and Barbuda |
+| weo_country_code | iso3c | country_name      |
+|:-----------------|:------|:------------------|
+| 512              | AFG   | Afghanistan       |
+| 914              | ALB   | Albania           |
+| 612              | DZA   | Algeria           |
+| 171              | AND   | Andorra           |
+| 614              | AGO   | Angola            |
+| 311              | ATG   | Antigua & Barbuda |
 
 ## Country/group code
 

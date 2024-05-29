@@ -74,7 +74,7 @@ imf_country_groups() %>%
 ## Country code
 ```{r}
 weo_country_code %>% 
-  head() %>% 
+  head(n = 6) %>% 
   kable()
 ```
 
