@@ -3,16 +3,6 @@
 # loading necessary libraries
 library(dplyr)
 
-# -------------------------------------------------------------------------
-
-# Function to replace non-ASCII characters
-replace_non_ascii <- function(column) {
-  if (is.character(column)) {
-    return(stringi::stri_trans_general(column, "latin-ascii"))
-  } else {
-    return(column)
-  }
-}
 # loading data: -----------------------------------------------------------
 # countries: --------------------------------------------------------------
 # link
@@ -31,17 +21,18 @@ df_clean_countries <- df_raw_countries %>%
   ) %>%
   janitor::clean_names() %>%
   dplyr::filter(weo_subject_code != "") %>%
-  dplyr::mutate(dplyr::across(dplyr::where(is.character), replace_non_ascii)) %>%
-  dplyr::mutate(iso3c = countrycode::countrycode(country, "country.name", "iso3c"),
-                iso3c = case_when(is.na(iso3c) ~ iso, .default = iso3c)) %>%
-  dplyr::select(-iso) %>%
-  relocate(iso3c, .after = weo_country_code)
+  rename("iso3c" = "iso") %>%
+  dplyr::mutate(country_name = countrycode::countrycode(iso3c,  "iso3c", "country.name"),
+                country_name = case_when(is.na(country_name) ~ country, .default = country_name)) %>%
+  dplyr::mutate(country_name = case_when(iso3c == "TUR" ~ country, .default = country_name)) %>%
+  relocate(c(iso3c, country_name), .after = weo_country_code) %>%
+  dplyr::select(-country)
 
 # main data
 IMFcountries <- df_clean_countries %>% tidyr::spread(key = year, value = outcome)
 
 # metadata weo_country_code
-weo_country_code <- df_clean_countries %>% dplyr::select(weo_country_code, iso3c, country) %>% dplyr::distinct()
+weo_country_code <- df_clean_countries %>% dplyr::select(weo_country_code, iso3c, country_name) %>% dplyr::distinct()
 
 # metadata weo_subject_code
 weo_subject_code <- df_clean_countries %>% dplyr::select(weo_subject_code, subject_descriptor, subject_notes, units, scale) %>% dplyr::distinct()
@@ -64,7 +55,8 @@ IMFgroups <- df_raw_groups %>%
     outcome = as.numeric(gsub(x = outcome, pattern = ",", replacement = ""))
   ) %>%
   janitor::clean_names() %>%
-  dplyr::filter(country_group_name != "")
+  dplyr::filter(country_group_name != "") %>%
+  relocate(country_group_name, .after = weo_country_group_code)
 
 # metadata weo_country_group_code
 weo_country_group_code <- IMFgroups %>% dplyr::select(weo_country_group_code, country_group_name) %>% dplyr::distinct()
